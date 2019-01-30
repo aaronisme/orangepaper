@@ -1,6 +1,5 @@
 import { article } from '../../models/article'
 
-
 const ALL_POST = 'https://orange.xyz/api/getallarticle'
 
 export async function fetchAllarticles(): Promise<Array<article>> {
