@@ -1,16 +1,32 @@
 import React from 'react';
 import { Component } from 'react';
 import { View } from 'react-native';
-import { ArticleItem } from './components/ArticleItem'
+import ArticleList from './components/ArticleList'
+import { article } from '../../models/article';
+import { fetchAllarticles } from '../MainPage/service';
 
-const test = {
-  imgUrl: 'https://orangebox.pek3b.qingstor.com/1548696680020_headimgfiles.jpg',
-  title: '笔胜于剑——比特币白皮书的印证',
-  description: '译者注：我并不完全赞同Erik Voorhees对法币的态度，作者把法币和加密货币完全对立到水火不相容，似乎更多把法币当'
+interface State {
+  articles: Array<article>
 }
 
-export default class MainPage extends Component{
+interface Props {}
+
+export default class MainPage extends Component<Props,State>{
+
+  constructor(props: Props) {
+    super(props)
+    this.state = {
+      articles: []
+    }
+  }
+
+  componentDidMount(){
+    fetchAllarticles().then((data: Array<article>) => this.setState({
+      articles: data
+    }))
+  }
+
     render() {
-      return <ArticleItem article={test} />
+      return <ArticleList articles={this.state.articles} />
     }
 }

@@ -11,12 +11,11 @@ export async function fetchAllarticles(): Promise<Array<article>> {
             description: each.description,
             id: each.id,
             createdTime: new Date(each.created_time),
-            imageUrl: each.headimg,
+            imageUrl: each.headimg.trim(),
         }))
         return posts
     }
     catch (e) {
         throw e
     }
-
 }
