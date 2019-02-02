@@ -1,16 +1,31 @@
 /** @format */
 
 import { Navigation } from "react-native-navigation";
-import App from './App';
+import MainPage from './src/pages/MainPage';
 
-Navigation.registerComponent(`orangepaper`, () => App);
+Navigation.registerComponent(`MainPage`, () => MainPage);
 
 Navigation.events().registerAppLaunchedListener(() => {
-      Navigation.setRoot({
-        root: {
-          component: {
-            name: "orangepaper"
+  Navigation.setRoot({
+    root: {
+      stack: {
+        options: {
+          topBar: {
+            title: {
+              text: 'Orangepaper'
+            },
+            alignment: 'center',
+            visible: true
           }
-        }
-      });
+        },
+        children: [
+          {
+            component: {
+              name: 'MainPage',
+            }
+          }
+        ]
+      }
+    }
+  });
     });

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Component } from 'react';
-import { View } from 'react-native';
+import { ScrollView } from 'react-native';
 import ArticleList from './components/ArticleList'
 import { article } from '../../models/article';
 import { fetchAllarticles } from '../MainPage/service';
@@ -9,9 +9,9 @@ interface State {
   articles: Array<article>
 }
 
-interface Props {}
+interface Props { }
 
-export default class MainPage extends Component<Props,State>{
+export default class MainPage extends Component<Props, State>{
 
   constructor(props: Props) {
     super(props)
@@ -20,13 +20,17 @@ export default class MainPage extends Component<Props,State>{
     }
   }
 
-  componentDidMount(){
+  componentDidMount() {
     fetchAllarticles().then((data: Array<article>) => this.setState({
       articles: data
     }))
   }
 
-    render() {
-      return <ArticleList articles={this.state.articles} />
-    }
+  render() {
+    return (
+      <ScrollView style={{ flex: 1, backgroundColor: 'white', marginHorizontal: 16 }} showsVerticalScrollIndicator={false}>
+        <ArticleList articles={this.state.articles} />
+      </ScrollView>
+    )
+  }
 }
