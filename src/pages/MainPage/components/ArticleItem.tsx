@@ -22,7 +22,8 @@ const ArticleItem: React.SFC<Props> = ({ article }) => {
             shadowOffset: {
                 width: 0,
                 height: 5
-            }
+            },
+            elevation: 3
         }}>
             <Image source={{ uri: article.imageUrl }} style={{
                 width: '100%', height: 220,
