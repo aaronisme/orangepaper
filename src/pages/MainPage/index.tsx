@@ -28,7 +28,7 @@ export default class MainPage extends Component<Props, State>{
 
   render() {
     return (
-      <ScrollView style={{ flex: 1, backgroundColor: 'white', marginHorizontal: 16 }} showsVerticalScrollIndicator={false}>
+      <ScrollView style={{ flex: 1, backgroundColor: 'white', marginHorizontal: 16, marginTop: 16}} showsVerticalScrollIndicator={false}>
         <ArticleList articles={this.state.articles} />
       </ScrollView>
     )
