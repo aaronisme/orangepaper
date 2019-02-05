@@ -65,7 +65,9 @@ class DetailPage extends Component<Props, State> {
 
     render() {
         const { headerImage, content, title, time } = this.state
-        return <WebView source={{ html: htmlTemp(headerImage, title, time, content) }} />
+        return <WebView
+            source={{ html: htmlTemp(headerImage, title, time, content) }}
+            automaticallyAdjustContentInsets={false} />
     }
 }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Component } from 'react';
+import { PureComponent } from 'react';
 import { View } from 'react-native';
 import ArticleList from './components/ArticleList'
 import { article } from '../../models/article';
@@ -14,7 +14,7 @@ interface Props {
   componentId: string
 }
 
-export default class MainPage extends Component<Props, State>{
+export default class MainPage extends PureComponent<Props, State>{
 
   constructor(props: Props) {
     super(props)
@@ -34,7 +34,7 @@ export default class MainPage extends Component<Props, State>{
     }, () => {
       fetchAllarticles().then((data: Array<article>) => this.setState({
         refreshing: false,
-        articles: data.slice(0,20)
+        articles: data
       })).catch(e => {
         this.setState({
           refreshing: false

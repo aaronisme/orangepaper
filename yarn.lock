@@ -4620,6 +4620,11 @@ react-lifecycles-compat@2.0.0:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-2.0.0.tgz#71d9c4cde47114c4102454f76da055c2bc48c948"
   integrity sha512-txfpPCQYiazVdcbMRhatqWKcAxJweUu2wDXvts5/7Wyp6+Y9cHojqXHsLPEckzutfHlxZhG8Oiundbmp8Fd6eQ==
 
+react-native-fast-image@^5.1.2:
+  version "5.1.2"
+  resolved "https://registry.yarnpkg.com/react-native-fast-image/-/react-native-fast-image-5.1.2.tgz#c9b909993e9304736c3d9806df80f7a9705ef829"
+  integrity sha512-NZsuW36I4fqnlOuxh0ZY31Q7wGWSqZMOC0wtp7ZcSG2dmjXSFaSFTdxX2vJx4Dhm0tMT3qG4yrn2ob3BiZEudA==
+
 react-native-navigation@^2.8.0:
   version "2.8.0"
   resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-2.8.0.tgz#30b25a0744dda7c04d29bb5c8e8c3af911627d51"

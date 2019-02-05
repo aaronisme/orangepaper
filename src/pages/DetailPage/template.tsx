@@ -81,6 +81,7 @@ export const htmlTemp= (headerImage: string, title:string, time: string, content
             line-height: 1.6;
             position: relative;
             background: #EDEDED;
+            word-wrap: break-word;
         }
     </style>
 </head>

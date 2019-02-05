@@ -1,5 +1,5 @@
 import React from 'react';
-import { Component } from 'react';
+import { PureComponent } from 'react';
 import { FlatList } from 'react-native';
 import ArticleItem from './ArticleItem'
 import { article } from '../../../models/article'
@@ -17,13 +17,15 @@ const viewConfig = {
     itemVisiblePercentThreshold: 95
 }
 
-export default class ArticleList extends Component<Props> {
+export default class ArticleList extends PureComponent<Props> {
     constructor(props: Props) {
         super(props)
-        
+
     }
 
     _keyExtractor = (item: article): string => item.id.toString()
+
+    renderItem = ({ item }: { item: article }) => <ArticleItem key={item.id} article={item} componentId={this.props.componentId} />
 
     render() {
         return <FlatList
@@ -33,7 +35,7 @@ export default class ArticleList extends Component<Props> {
             refreshing={this.props.refreshing}
             keyExtractor={this._keyExtractor}
             initialNumToRender={4}
-            renderItem={({ item }) => <ArticleItem article={item} componentId={this.props.componentId}/>}
+            renderItem={this.renderItem}
         />
     }
 

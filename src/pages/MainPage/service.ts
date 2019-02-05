@@ -12,7 +12,7 @@ export async function fetchAllarticles(): Promise<Array<article>> {
             description: each.description,
             id: each.id,
             createdTime: new Date(each.created_time),
-            imageUrl: each.headimg.trim(),
+            imageUrl: processImageUrl(each.headimg.trim()),
         }))
         return posts
     }
@@ -30,4 +30,18 @@ export async function fetchArticle(id: number) : Promise<string> {
     catch (e) {
         throw e
     }
+}
+
+const processImageUrl = (input: string): string => {
+    const urlPrefix = /^http/g
+    if(urlPrefix.test(input)){
+        return input
+    }
+
+    const staticPrefix = /^\/static/g
+    if(staticPrefix.test(input)){
+        return `https://orange.xyz${input}`
+    }
+
+    return 'https://orange.xyz/static/navbar/logo.png'
 }
