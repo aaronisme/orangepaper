@@ -2,6 +2,6 @@ export type article = {
     title: string,
     description: string,
     id: number,
-    createdTime: Date,
+    createdTime: string,
     imageUrl: string,
 }

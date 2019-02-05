@@ -11,7 +11,7 @@ interface Props {
         imageUrl: string,
         title: string,
         description: string
-        createdTime: Date,
+        createdTime: string,
         id: number,
     },
     componentId: string,
@@ -33,7 +33,7 @@ class ArticleItem extends PureComponent<Props> {
                     id: article.id,
                     sourceUrl: `https://orange.xyz/p/${article.id}`,
                     headerImage: article.imageUrl,
-                    time: format(article.createdTime, 'YYYY-MM-DD HH:MM:SS')
+                    time: format(article.createdTime, 'YYYY-MM-DD HH:MM')
                 }
             }
         })

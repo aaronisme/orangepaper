@@ -11,7 +11,7 @@ export async function fetchAllarticles(): Promise<Array<article>> {
             title: each.title,
             description: each.description,
             id: each.id,
-            createdTime: new Date(each.created_time),
+            createdTime: each.created_time,
             imageUrl: processImageUrl(each.headimg.trim()),
         }))
         return posts

@@ -1,4 +1,4 @@
-export const htmlTemp= (headerImage: string, title:string, time: string, content:string):string => `<!DOCTYPE html>
+export const htmlTemp = (headerImage: string, title: string, time: string, content: string): string => `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -68,7 +68,13 @@ export const htmlTemp= (headerImage: string, title:string, time: string, content
             list-style-position: inside;
             padding: 0
         }
-
+        a:link {
+            color: #A6A6A6;
+            text-decoration: none
+        }
+        a:visited {
+            color: #A6A6A6;
+        }
         blockquote {
             font-size: 1rem;
             width: 80%;
@@ -92,7 +98,7 @@ export const htmlTemp= (headerImage: string, title:string, time: string, content
     </div>
     <div class="title">
         <div class="detail">${title}</div>
-        <div class='time'>发表于${time}</div>
+        <div class='time'>${time}</div>
     </div>
     <div class="main-content">${content}</div>
 </body>
