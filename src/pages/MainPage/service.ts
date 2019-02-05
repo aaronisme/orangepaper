@@ -1,6 +1,7 @@
 import { article } from '../../models/article'
 
 const ALL_POST = 'https://orange.xyz/api/getallarticle'
+const ONE_POST = 'https://orange.xyz/api/p/'
 
 export async function fetchAllarticles(): Promise<Array<article>> {
     try {
@@ -14,6 +15,17 @@ export async function fetchAllarticles(): Promise<Array<article>> {
             imageUrl: each.headimg.trim(),
         }))
         return posts
+    }
+    catch (e) {
+        throw e
+    }
+}
+
+export async function fetchArticle(id: number) : Promise<string> {
+    try {
+        const response = await fetch(`${ONE_POST}${id}`)
+        const result = await response.json()
+        return result.content
     }
     catch (e) {
         throw e

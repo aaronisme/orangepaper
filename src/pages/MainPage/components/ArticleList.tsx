@@ -6,6 +6,7 @@ import { article } from '../../../models/article'
 
 
 interface Props {
+    componentId: string,
     onRefresh: () => void,
     refreshing: boolean,
     articles: Array<article>
@@ -30,10 +31,9 @@ export default class ArticleList extends Component<Props> {
             data={this.props.articles}
             onRefresh={this.props.onRefresh}
             refreshing={this.props.refreshing}
-            viewabilityConfig={viewConfig}
             keyExtractor={this._keyExtractor}
             initialNumToRender={4}
-            renderItem={({ item }) => <ArticleItem article={item} />}
+            renderItem={({ item }) => <ArticleItem article={item} componentId={this.props.componentId}/>}
         />
     }
 

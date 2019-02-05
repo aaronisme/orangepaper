@@ -10,7 +10,9 @@ interface State {
   articles: Array<article>
 }
 
-interface Props { }
+interface Props { 
+  componentId: string
+}
 
 export default class MainPage extends Component<Props, State>{
 
@@ -32,9 +34,8 @@ export default class MainPage extends Component<Props, State>{
     }, () => {
       fetchAllarticles().then((data: Array<article>) => this.setState({
         refreshing: false,
-        articles: data
+        articles: data.slice(0,20)
       })).catch(e => {
-        console.log(e)
         this.setState({
           refreshing: false
         })
@@ -45,8 +46,8 @@ export default class MainPage extends Component<Props, State>{
 
   render() {
     return (
-      <View style={{ flex: 1, backgroundColor: 'white', marginHorizontal: 16, marginTop: 16 }}>
-        <ArticleList articles={this.state.articles} refreshing={this.state.refreshing} onRefresh={this.loadData} />
+      <View style={{ flex: 1, backgroundColor: '#fafafa', paddingHorizontal: 16, paddingTop: 16 }}>
+        <ArticleList articles={this.state.articles} refreshing={this.state.refreshing} onRefresh={this.loadData} componentId={this.props.componentId}/>
       </View>
     )
   }
