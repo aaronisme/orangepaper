@@ -26,7 +26,10 @@ class DetailPage extends Component<Props, State> {
         return {
             topBar: {
                 title: {
-                    text: passProps.title
+                    component: {
+                        name: 'Logo',
+                        alignment: 'center'
+                      }
                 },
                 visible: true,
                 buttonColor: '#A6A6A6',
