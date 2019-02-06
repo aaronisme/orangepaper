@@ -4,6 +4,7 @@ import FastImage from 'react-native-fast-image'
 import { View, Text, TouchableOpacity } from 'react-native';
 import format from 'date-fns/format';
 import { Navigation } from "react-native-navigation";
+import { track } from '../../../libs/track'
 
 
 interface Props {
@@ -37,6 +38,7 @@ class ArticleItem extends PureComponent<Props> {
                 }
             }
         })
+        track('article', {id: article.id, title: article.title})
     }
 
     render() {

@@ -2088,7 +2088,7 @@ fbjs-scripts@^1.0.0:
     semver "^5.1.0"
     through2 "^2.0.0"
 
-fbjs@^0.8.9:
+fbjs@^0.8.5, fbjs@^0.8.9:
   version "0.8.17"
   resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.8.17.tgz#c4d598ead6949112653d6588b01a5cdcd9f90fdd"
   integrity sha1-xNWY6taUkRJlPWWIsBpc3Nn5D90=
@@ -4619,6 +4619,18 @@ react-lifecycles-compat@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-2.0.0.tgz#71d9c4cde47114c4102454f76da055c2bc48c948"
   integrity sha512-txfpPCQYiazVdcbMRhatqWKcAxJweUu2wDXvts5/7Wyp6+Y9cHojqXHsLPEckzutfHlxZhG8Oiundbmp8Fd6eQ==
+
+react-native-amplitude-analytics@^0.2.6:
+  version "0.2.6"
+  resolved "https://registry.yarnpkg.com/react-native-amplitude-analytics/-/react-native-amplitude-analytics-0.2.6.tgz#e603dba405d6a9b029cbcc7ef21f2fb378ab2768"
+  integrity sha512-BvBRdr3R8NE6eas6RPTloFoEe1YC1AT5Org9AlN4eGrZ9DHjUL6Z9pCXcMA1G9W7o+UjM3XrDYoSyPCRqVvWtg==
+  dependencies:
+    fbjs "^0.8.5"
+
+react-native-device-info@^0.26.2:
+  version "0.26.2"
+  resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-0.26.2.tgz#c9e350e11f0c2f9a65f3e4fec8ddcab6881b7deb"
+  integrity sha512-Hbzc3sZxfJX0Do1yLF8Dt+tuz6+IZ61iTNGqF2LPpRhCDiJI5asrEtXF7g6bRS1H5lA2/eJDYCI/c35w63JpKA==
 
 react-native-fast-image@^5.1.2:
   version "5.1.2"

@@ -3,7 +3,9 @@
 import { Navigation } from "react-native-navigation";
 import MainPage from './src/pages/MainPage';
 import DetailPage from './src/pages/DetailPage';
-import Logo from './src/components/Logo'
+import Logo from './src/components/Logo';
+import './src/libs/track';
+
 
 Navigation.registerComponent(`MainPage`, () => MainPage);
 Navigation.registerComponent('Logo', () => Logo)

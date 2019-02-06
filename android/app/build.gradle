@@ -156,6 +156,9 @@ dependencies {
     implementation "com.facebook.react:react-native:+"  // From node_modules
     implementation project(':react-native-navigation')
     implementation project(':react-native-fast-image')
+    implementation 'com.amplitude:android-sdk:2.19.1' // native sdk of amplitude
+    implementation project(':react-native-amplitude-analytics')
+    implementation project(':react-native-device-info')
 
 }
 
