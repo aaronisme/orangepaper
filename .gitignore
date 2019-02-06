@@ -57,3 +57,4 @@ buck-out/
 .jest/
 ios/Pods/
 src/config/index.ts
+config/
