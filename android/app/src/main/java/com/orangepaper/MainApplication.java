@@ -3,6 +3,7 @@ package com.orangepaper;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import io.sentry.RNSentryPackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import com.sudoplz.reactnativeamplitudeanalytics.RNAmplitudeSDKPackage;
 import com.dylanvann.fastimage.FastImageViewPackage;
@@ -43,7 +44,8 @@ public class MainApplication extends NavigationApplication {
                 // eg. new VectorIconsPackage()
                 new FastImageViewPackage(),
                 new RNDeviceInfo(),
-                new RNAmplitudeSDKPackage(MainApplication.this)
+                new RNAmplitudeSDKPackage(MainApplication.this),
+                new RNSentryPackage()
         );
     }
 

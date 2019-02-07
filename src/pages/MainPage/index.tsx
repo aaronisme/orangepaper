@@ -5,6 +5,7 @@ import ArticleList from './components/ArticleList'
 import { article } from '../../models/article';
 import { fetchAllarticles } from '../MainPage/service';
 import { withAlert, withAlertProps } from '../../components/hoc'
+import { logger } from '../../libs/error';
 
 interface State {
   refreshing: boolean,
@@ -29,6 +30,10 @@ class MainPage extends PureComponent<Props & withAlertProps, State>{
     this.loadData()
   }
 
+  componentDidCatch(e:Error, info: React.ErrorInfo) {
+    logger.error(e, info)
+  }
+
   loadData = () => {
     this.setState({
       refreshing: true
@@ -40,10 +45,10 @@ class MainPage extends PureComponent<Props & withAlertProps, State>{
         this.setState({
           refreshing: false
         })
+        logger.error(e)
         this.props.showAlert('error', 'oops,网络出了点状况,请稍后再试')
       })
     })
-
   }
 
   render() {

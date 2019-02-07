@@ -73,10 +73,13 @@ import com.android.build.OutputFile
  */
 
 project.ext.react = [
-    entryFile: "index.js"
+    entryFile: "index.js",
+    // temper fix for react native setnry issue https://github.com/getsentry/react-native-sentry/issues/539
+    bundleInDebug: true
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
+apply from: "../../node_modules/react-native-sentry/sentry.gradle"
 
 /**
  * Set this to true to create two separate APKs instead of one:
@@ -159,7 +162,7 @@ dependencies {
     implementation 'com.amplitude:android-sdk:2.19.1' // native sdk of amplitude
     implementation project(':react-native-amplitude-analytics')
     implementation project(':react-native-device-info')
-
+    implementation project(':react-native-sentry')
 }
 
 // Run this once to be able to run the application with BUCK

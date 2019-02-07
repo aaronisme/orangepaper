@@ -10,6 +10,8 @@ target 'orangepaper' do
   pod 'Amplitude-iOS', '~> 4.3.1'
   # pod 'react-native-amplitude-analytics', :path => '../node_modules/react-native-amplitude-analytics'
 
+  # pod 'SentryReactNative', :path => '../node_modules/react-native-sentry'
+  
   target 'orangepaperTests' do
     inherit! :search_paths
     # Pods for testing

@@ -4,6 +4,7 @@ import { WebView } from 'react-native';
 import { fetchArticle } from '../MainPage/service';
 import { htmlTemp } from './template';
 import { withAlert, withAlertProps } from '../../components/hoc'
+import { logger } from '../../libs/error';
 
 
 interface Props {
@@ -31,7 +32,7 @@ class DetailPage extends Component<Props & withAlertProps, State> {
                     component: {
                         name: 'Logo',
                         alignment: 'center'
-                      }
+                    }
                 },
                 visible: true,
                 buttonColor: '#A6A6A6',
@@ -57,6 +58,10 @@ class DetailPage extends Component<Props & withAlertProps, State> {
         this.fetchContent(this.props.id)
     }
 
+    componentDidCatch(e: Error, info: React.ErrorInfo) {
+        logger.error(e, info)
+    }
+
     fetchContent = (id: number): void => {
         fetchArticle(id).then(data => this.setState(
             {
@@ -65,6 +70,7 @@ class DetailPage extends Component<Props & withAlertProps, State> {
                 headerImage: this.props.headerImage,
                 time: this.props.time
             })).catch(e => {
+                logger.error(e)
                 this.props.showAlert('error', 'oops,网络出了点状况,请稍后再试')
             })
     }
