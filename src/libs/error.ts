@@ -1,10 +1,10 @@
 import React from 'react';
 import { Sentry } from 'react-native-sentry';
-import { sentryDsn } from '../config'
-Sentry.config(sentryDsn).install();
-// if(!__DEV__) {
-//     Sentry.config(sentryDsn).install();
-// }
+    
+if(!__DEV__) {
+    const { sentryDsn } = require('../config')
+    Sentry.config(sentryDsn).install();
+}
 
 
 type logger = {
