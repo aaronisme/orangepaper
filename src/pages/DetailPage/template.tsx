@@ -10,10 +10,18 @@ export const htmlTemp = (headerImage: string, title: string, time: string, conte
             margin: 0;
             font-family: -apple-system,SF UI Text,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-seri;
         }
+        .header-image {
+            display: block;
+            position: relative;
+            height: 0;
+            padding-bottom: 66.7%;
+        }
         .header-image img{
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            padding: 0;
-            margin: 0;
+            height: 100%;
         }
         .title {
             margin: 2rem 2rem 1rem 2rem; 
