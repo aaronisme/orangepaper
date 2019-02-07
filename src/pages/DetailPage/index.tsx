@@ -3,6 +3,8 @@ import { Component } from 'react'
 import { WebView } from 'react-native';
 import { fetchArticle } from '../MainPage/service';
 import { htmlTemp } from './template';
+import { withAlert, withAlertProps } from '../../components/hoc'
+
 
 interface Props {
     sourceUrl: string,
@@ -21,7 +23,7 @@ interface State {
 
 const tagStyles = { p: { fontSize: 15, paddingHorizontal: 16, marginBottom: 25 } }
 
-class DetailPage extends Component<Props, State> {
+class DetailPage extends Component<Props & withAlertProps, State> {
     static options(passProps: Props) {
         return {
             topBar: {
@@ -41,7 +43,7 @@ class DetailPage extends Component<Props, State> {
         };
     }
 
-    constructor(props: Props) {
+    constructor(props: Props & withAlertProps) {
         super(props)
         this.state = {
             content: '',
@@ -62,7 +64,9 @@ class DetailPage extends Component<Props, State> {
                 title: this.props.title,
                 headerImage: this.props.headerImage,
                 time: this.props.time
-            }))
+            })).catch(e => {
+                this.props.showAlert('error', 'oops,网络出了点状况,请稍后再试')
+            })
     }
 
 
@@ -74,4 +78,4 @@ class DetailPage extends Component<Props, State> {
     }
 }
 
-export default DetailPage
+export default withAlert(DetailPage)

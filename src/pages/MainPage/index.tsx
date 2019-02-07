@@ -4,6 +4,7 @@ import { View } from 'react-native';
 import ArticleList from './components/ArticleList'
 import { article } from '../../models/article';
 import { fetchAllarticles } from '../MainPage/service';
+import { withAlert, withAlertProps } from '../../components/hoc'
 
 interface State {
   refreshing: boolean,
@@ -14,9 +15,9 @@ interface Props {
   componentId: string
 }
 
-export default class MainPage extends PureComponent<Props, State>{
+class MainPage extends PureComponent<Props & withAlertProps, State>{
 
-  constructor(props: Props) {
+  constructor(props: Props & withAlertProps) {
     super(props)
     this.state = {
       articles: [],
@@ -39,6 +40,7 @@ export default class MainPage extends PureComponent<Props, State>{
         this.setState({
           refreshing: false
         })
+        this.props.showAlert('error', 'oops,网络出了点状况,请稍后再试')
       })
     })
 
@@ -52,3 +54,5 @@ export default class MainPage extends PureComponent<Props, State>{
     )
   }
 }
+
+export default withAlert(MainPage)
