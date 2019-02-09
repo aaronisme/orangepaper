@@ -20,6 +20,7 @@ interface State {
     title: string,
     headerImage: string,
     time: string,
+    key: number
 }
 
 const tagStyles = { p: { fontSize: 15, paddingHorizontal: 16, marginBottom: 25 } }
@@ -51,6 +52,7 @@ class DetailPage extends Component<Props & withAlertProps, State> {
             title: '',
             headerImage: '',
             time: '',
+            key: 1
         }
     }
 
@@ -68,7 +70,8 @@ class DetailPage extends Component<Props & withAlertProps, State> {
                 content: data,
                 title: this.props.title,
                 headerImage: this.props.headerImage,
-                time: this.props.time
+                time: this.props.time,
+                key: this.state.key + 1
             })).catch(e => {
                 logger.error(e)
                 this.props.showAlert('error', 'oops,网络出了点状况,请稍后再试')
@@ -77,10 +80,12 @@ class DetailPage extends Component<Props & withAlertProps, State> {
 
 
     render() {
-        const { headerImage, content, title, time } = this.state
+        const { headerImage, content, title, time, key } = this.state
         return <WebView
+            key={key}
             source={{ html: htmlTemp(headerImage, title, time, content) }}
             automaticallyAdjustContentInsets={false} />
+
     }
 }
 
