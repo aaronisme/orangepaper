@@ -2,6 +2,7 @@ import React from 'react';
 import { PureComponent } from 'react';
 import { View } from 'react-native';
 import ArticleList from './components/ArticleList'
+import Logo from '../../components/Logo'
 import { article } from '../../models/article';
 import { fetchAllarticles } from '../MainPage/service';
 import { withAlert, withAlertProps } from '../../components/hoc'
@@ -12,7 +13,7 @@ interface State {
   articles: Array<article>
 }
 
-interface Props { 
+interface Props {
   componentId: string
 }
 
@@ -30,7 +31,7 @@ class MainPage extends PureComponent<Props & withAlertProps, State>{
     this.loadData()
   }
 
-  componentDidCatch(e:Error, info: React.ErrorInfo) {
+  componentDidCatch(e: Error, info: React.ErrorInfo) {
     logger.error(e, info)
   }
 
@@ -54,7 +55,7 @@ class MainPage extends PureComponent<Props & withAlertProps, State>{
   render() {
     return (
       <View style={{ flex: 1, backgroundColor: '#fafafa', paddingHorizontal: 16, paddingTop: 16 }}>
-        <ArticleList articles={this.state.articles} refreshing={this.state.refreshing} onRefresh={this.loadData} componentId={this.props.componentId}/>
+        <ArticleList articles={this.state.articles} refreshing={this.state.refreshing} onRefresh={this.loadData} componentId={this.props.componentId} />
       </View>
     )
   }

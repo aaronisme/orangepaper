@@ -12,6 +12,8 @@ target 'orangepaper' do
 
   # pod 'SentryReactNative', :path => '../node_modules/react-native-sentry'
   
+  pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
+
   target 'orangepaperTests' do
     inherit! :search_paths
     # Pods for testing

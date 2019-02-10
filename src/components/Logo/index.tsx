@@ -2,7 +2,7 @@ import React from 'react';
 import { Image } from 'react-native'
 
 interface props {
-    style: object,
+    style?: object,
 }
 
 

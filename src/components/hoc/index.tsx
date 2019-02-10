@@ -29,10 +29,10 @@ const styles = {
         fontSize: 14,
         fontWeight: 'bold',
     },
-    image:{
+    image: {
         display: 'none'
     }
-    
+
 };
 
 
@@ -50,8 +50,9 @@ export const withAlert = (Component: React.ComponentType<any>) => {
         }
         render() {
             return [
-                <Component {...this.props} showAlert={this.showAlert} />,
+                <Component {...this.props} showAlert={this.showAlert} key={'content-page'} />,
                 <DropdownAlert ref={this.Ref}
+                    key={'alert-box'}
                     closeInterval={3000}
                     messageNumOfLines={5}
                     successColor={'#5350F3'}

@@ -14,7 +14,6 @@
 #else
 #import "RNSentry.h" // This is used for versions of react < 0.40
 #endif
-#import <ReactNativeNavigation/ReactNativeNavigation.h>
 
 @implementation AppDelegate
 
@@ -28,8 +27,18 @@
     jsCodeLocation = [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
   #endif
 
-  [ReactNativeNavigation bootstrap:jsCodeLocation launchOptions:launchOptions];
-  [RNSentry installWithBridge:[ReactNativeNavigation getBridge]];
+  RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
+                                                      moduleName:@"orangepaper"
+                                               initialProperties:nil
+                                                   launchOptions:launchOptions];
+  rootView.backgroundColor = [[UIColor alloc] initWithRed:1.0f green:1.0f blue:1.0f alpha:1];
+  
+  self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+  UIViewController *rootViewController = [UIViewController new];
+  rootViewController.view = rootView;
+  self.window.rootViewController = rootViewController;
+  [self.window makeKeyAndVisible];
+  [RNSentry installWithRootView:rootView];
   return YES;
 }
 

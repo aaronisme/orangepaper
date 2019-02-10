@@ -3,7 +3,7 @@ import { PureComponent } from 'react';
 import FastImage from 'react-native-fast-image'
 import { View, Text, TouchableOpacity } from 'react-native';
 import format from 'date-fns/format';
-import { Navigation } from "react-native-navigation";
+import { withNavigation, NavigationInjectedProps } from 'react-navigation';
 import { track } from '../../../libs/track'
 
 
@@ -19,24 +19,19 @@ interface Props {
 }
 
 
-class ArticleItem extends PureComponent<Props> {
-    constructor(props: Props) {
+class ArticleItem extends PureComponent<Props & NavigationInjectedProps> {
+    constructor(props: Props & NavigationInjectedProps) {
         super(props)
     }
 
     onItemPress = (): void => {
-        const { article, componentId } = this.props
-        Navigation.push(componentId, {
-            component: {
-                name: 'DetailPage',
-                passProps: {
-                    title: article.title,
-                    id: article.id,
-                    sourceUrl: `https://orange.xyz/p/${article.id}`,
-                    headerImage: article.imageUrl,
-                    time: format(article.createdTime, 'YYYY-MM-DD HH:MM')
-                }
-            }
+        const { article } = this.props
+        this.props.navigation.navigate('Detail', {
+            title: article.title,
+            id: article.id,
+            sourceUrl: `https://orange.xyz/p/${article.id}`,
+            headerImage: article.imageUrl,
+            time: format(article.createdTime, 'YYYY-MM-DD HH:MM')
         })
         track('article', {id: article.id, title: article.title})
     }
@@ -71,4 +66,4 @@ class ArticleItem extends PureComponent<Props> {
     }
 }
 
-export default ArticleItem
+export default withNavigation(ArticleItem)

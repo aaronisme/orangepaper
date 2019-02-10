@@ -1,8 +1,10 @@
 import React from 'react';
 import { Component } from 'react'
 import { WebView } from 'react-native';
+import { NavigationInjectedProps, HeaderBackButton } from 'react-navigation'
 import { fetchArticle } from '../MainPage/service';
 import { htmlTemp } from './template';
+import Logo from '../../components/Logo'
 import { withAlert, withAlertProps } from '../../components/hoc'
 import { logger } from '../../libs/error';
 
@@ -23,29 +25,14 @@ interface State {
     key: number
 }
 
-const tagStyles = { p: { fontSize: 15, paddingHorizontal: 16, marginBottom: 25 } }
-
-class DetailPage extends Component<Props & withAlertProps, State> {
-    static options(passProps: Props) {
+class DetailPage extends Component<Props & withAlertProps & NavigationInjectedProps, State> {
+    static navigationOptions = ({ navigation }: NavigationInjectedProps)   => {
         return {
-            topBar: {
-                title: {
-                    component: {
-                        name: 'Logo',
-                        alignment: 'center'
-                    }
-                },
-                visible: true,
-                buttonColor: '#A6A6A6',
-                backButton: {
-                    color: '#A6A6A6',
-                    visible: true
-                }
-            },
-        };
-    }
+            headerBackImage: <HeaderBackButton tintColor={'#A6A6A6'} onPress={() => navigation.goBack()} />
+        }
+    };
 
-    constructor(props: Props & withAlertProps) {
+    constructor(props: Props & withAlertProps & NavigationInjectedProps) {
         super(props)
         this.state = {
             content: '',
@@ -57,20 +44,24 @@ class DetailPage extends Component<Props & withAlertProps, State> {
     }
 
     componentDidMount() {
-        this.fetchContent(this.props.id)
+        this.fetchContent()
     }
 
     componentDidCatch(e: Error, info: React.ErrorInfo) {
         logger.error(e, info)
     }
 
-    fetchContent = (id: number): void => {
+    fetchContent = (): void => {
+        const id = this.props.navigation.getParam('id')
+        const title = this.props.navigation.getParam('title', '')
+        const headerImage = this.props.navigation.getParam('headerImage', '')
+        const time = this.props.navigation.getParam('time', '')
         fetchArticle(id).then(data => this.setState(
             {
                 content: data,
-                title: this.props.title,
-                headerImage: this.props.headerImage,
-                time: this.props.time,
+                title,
+                headerImage,
+                time,
                 key: this.state.key + 1
             })).catch(e => {
                 logger.error(e)
