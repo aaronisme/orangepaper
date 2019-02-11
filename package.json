@@ -5,7 +5,8 @@
   "scripts": {
     "start": "cp config/index.ts src/config/index.ts && node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
-    "android": "cd ./android && ./gradlew app:assembleDebug && ./gradlew installDebug"
+    "android:dev": "cd ./android && ./gradlew app:assembleDebug && ./gradlew installDebug",
+    "android:build": "cd ./android && ./gradlew clean && ./gradlew app:assembleRelease"
   },
   "dependencies": {
     "@types/hoist-non-react-statics": "^3.0.1",
