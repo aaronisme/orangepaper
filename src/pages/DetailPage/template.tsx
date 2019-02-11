@@ -42,7 +42,8 @@ export const htmlTemp = (headerImage: string, title: string, time: string, conte
             font-weight: 400;
             padding: 0 1rem;
             font-size: 1rem;
-            line-height: 1.7
+            line-height: 1.7;
+            word-wrap: break-word;
         }
 
         .main-content img {
